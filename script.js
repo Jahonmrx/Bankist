@@ -38,7 +38,7 @@ const accounts = [account1, account2, account3, account4];
 // Elements
 const labelWelcome = document.querySelector('.welcome');
 const labelDate = document.querySelector('.date');
-const labelBalance = document.querySelector('.balance__label');
+const labelBalance = document.querySelector('.balance__value');
 const labelSumIn = document.querySelector('.summary__value--in');
 const labelSumOut = document.querySelector('.summary__value--out');
 const labelSumCashBack = document.querySelector('.summary__value--interest');
@@ -75,7 +75,7 @@ function displayMovements(movements){
             1 ${type}
           </div>
           <div class="movements__date">24/01/2037</div>
-          <div class="movements__value">${move}</div>
+          <div class="movements__value">${move}$</div>
         </div>
         `;
 
