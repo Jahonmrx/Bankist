@@ -60,8 +60,12 @@ const inputTransferAmount = document.querySelector('.form__input--amount');
 const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
+
+const modal = document.querySelector('.hidden');
 /////////////////////////////////////////////////
 // Functions
+
+
 
 function displayMovements(movements){
     containerMovements.innerHTML = '';
@@ -109,6 +113,43 @@ function displaySummary(account){
 
     labelSumCashBack.textContent = `${cashback}$`;
 }
+
+accounts.forEach((acc)=>{
+  let userName = acc.owner
+    .toLowerCase()
+    .split(' ')
+    .map(el => el[0])
+    .join('');
+
+  acc.userName = userName
+});
+
+let currentUser;
+
+btnLogin.addEventListener('click', (e)=>{
+  e.preventDefault();
+
+  let user = accounts.find(acc => inputLoginUsername.value == acc.userName);
+ 
+  console.log(user);
+
+  if(!user || inputLognPin.value != user.pin){
+    modal.style.display = 'flex'
+    return
+  }
+
+  currentUser = user;
+
+  inputLoginUsername.value = inputLognPin.value = '';
+
+  labelWelcome.textContent = `Hello ${currentUser.owner.split(' ')[0]}`
+  containerApp.style.opacity = 1
+
+  displayMovements(currentUser.movements);
+  displayBalance(currentUser.movements);
+  displaySummary(currentUser);
+})
+
 
 displayMovements(account1.movements);
 displayBalance(account1.movements);
