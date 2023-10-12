@@ -361,6 +361,9 @@ h2{
     .summary__value {
         margin-right: 2rem;
     }
+    .form__btn{
+        font-size: 2rem;
+    }
 }
 
 @media screen and (max-width: 378px){
